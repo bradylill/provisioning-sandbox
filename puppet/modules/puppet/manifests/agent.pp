@@ -19,4 +19,9 @@ class puppet::agent {
     content => template('puppet/puppet.agent.conf.erb'),
     require => Package['puppet-server'],
   }
+
+  service { 'puppet':
+    ensure => running,
+    require => File['/etc/puppet/puppet.conf']
+  }
 }

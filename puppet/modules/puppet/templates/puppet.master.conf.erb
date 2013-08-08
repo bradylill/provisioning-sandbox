@@ -10,6 +10,7 @@
   # Where SSL certificates are kept.
   # The default value is '$confdir/ssl'.
   ssldir = $vardir/ssl
+  report = false
 
 [agent]
   # The file in which puppetd stores a list of the classes
@@ -25,7 +26,6 @@
   localconfig = $vardir/localconfig
   server      = <%= @fqdn %>
   runinterval = 1m
-  report      = true
   pluginsync  = true
   certname    = <%= @fqdn %>
 

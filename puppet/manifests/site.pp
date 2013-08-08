@@ -1,15 +1,16 @@
-node 'puppet-master.local' {
-  notify {'I am a puppet master':}
+node puppetmaster {
   include puppet::master
 }
 
-node 'puppet-agent1.local' {
-  notify {'I am a puppet agent1':}
+node puppetagent {
   include puppet::agent
 }
 
-node 'puppet-agent2.local' {
-  notify {'I am a puppet agent2':}
-  include puppet::agent
+node 'puppet-master.local' inherits puppetmaster {}
+
+node 'puppet-agent1.local' inherits puppetagent {
+}
+
+node 'puppet-agent2.local' inherits puppetagent{
 }
 

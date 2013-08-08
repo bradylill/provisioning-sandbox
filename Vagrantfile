@@ -32,7 +32,4 @@ Vagrant.configure("2") do |config|
       end
     end
   end
-  
-  # config.vm.box_url = "http://domain.com/path/to/above.box"
-  # config.vm.network :forwarded_port, guest: 80, host: 8080
 end
