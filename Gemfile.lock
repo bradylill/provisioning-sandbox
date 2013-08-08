@@ -1,0 +1,38 @@
+GIT
+  remote: https://github.com/capistrano/capistrano.git
+  revision: 78a5b69390ab3ac3c3179bc072da13a62add9c2e
+  specs:
+    capistrano (2.15.4)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    coderay (1.0.9)
+    highline (1.6.19)
+    method_source (0.8.1)
+    net-scp (1.1.2)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.8)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    puppet-lint (0.3.2)
+    slop (3.4.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  capistrano!
+  pry
+  puppet-lint
