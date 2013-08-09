@@ -1,14 +1,13 @@
-class puppet::agent {
-  $puppet_master = '192.168.100.10'
-  $puppet_master_host = 'puppet-master.local'
-
-  package {'puppet-server':
+class puppet::agent ($master_hostname = 'puppet-master.local',
+                     $master_ip       = '192.168.100.10')
+{
+  package {'puppet':
     ensure => installed,
   }
   
-  host { 'puppet-master.local':
+  host { $master_hostname:
     ensure => present,
-    ip     => $puppet_master
+    ip     => $master_ip,
   }
 
   file { '/etc/puppet/puppet.conf':
@@ -17,11 +16,11 @@ class puppet::agent {
     group   => 'root',
     mode    => '0644',
     content => template('puppet/puppet.agent.conf.erb'),
-    require => Package['puppet-server'],
+    require => Package['puppet'],
   }
 
   service { 'puppet':
     ensure => running,
-    require => File['/etc/puppet/puppet.conf']
+    require => Package['puppet']
   }
 }

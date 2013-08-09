@@ -1,6 +1,5 @@
-class puppet::master {
-  $autosign_certs = ['puppet-agent1.local', 'puppet-agent2.local']
-
+class puppet::master ($autosign_certs = []) {
+  
   package {'puppet-server':
     ensure => installed,
   }
@@ -11,6 +10,7 @@ class puppet::master {
     group => 'root',
     mode  => '0644',
     content  => template('puppet/puppet.master.conf.erb'),
+    notify   => Service['puppetmaster'],
     require  => Package['puppet-server'],
   }
   
@@ -25,12 +25,12 @@ class puppet::master {
 
   service { 'puppet':
     ensure => running,
-    require => File['/etc/puppet/autosign.conf']
+    require => Package['puppet-server']
   }
 
   service { 'puppetmaster':
     ensure => running,
-    require => File['/etc/puppet/autosign.conf']
+    require => Package['puppet-server']
   }
 }
 
